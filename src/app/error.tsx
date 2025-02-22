@@ -9,7 +9,7 @@ const ErrorPage = () => {
         <div className="h-screen flex flex-col gap-y-4 items-center justify-center">
             <AlertTriangle className="size-6 text-muted-foreground" />
             <p className="text-sm text-muted-foreground">
-                Semothing went wrong
+                Something went wrong
             </p>
             <Button variant="secondary" size="sm">
                 <Link href="/">

@@ -1,1 +1,1 @@
-export const AUTH_COOKIE = "komalima-jira-clone-session";
+export const AUTH_COOKIE = "love-u-herlinda";

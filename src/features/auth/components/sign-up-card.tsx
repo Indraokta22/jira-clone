@@ -27,10 +27,11 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { registerSchema } from "../schemas";
 import { useRegister } from "../api/use-register";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 
 
 export const SignUpCard = () => {
-    const {mutate, isPending} = useRegister();
+    const { mutate, isPending } = useRegister();
 
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
@@ -42,7 +43,7 @@ export const SignUpCard = () => {
     });
 
     const onSubmit = (values: z.infer<typeof registerSchema>) => {
-        mutate({json: values});
+        mutate({ json: values });
     }
 
     return (
@@ -68,7 +69,7 @@ export const SignUpCard = () => {
             <CardContent className="p-7">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                    <FormField
+                        <FormField
                             name="name"
                             control={form.control}
                             render={({ field }) => (
@@ -128,6 +129,7 @@ export const SignUpCard = () => {
             </div>
             <CardContent className="flex flex-col p-7 gap-y-4">
                 <Button
+                    onClick={() => signUpWithGoogle()}
                     disabled={isPending}
                     variant="secondary"
                     size="lg"
@@ -136,6 +138,7 @@ export const SignUpCard = () => {
                     Login with Google
                 </Button>
                 <Button
+                    onClick={() => signUpWithGithub()}
                     disabled={isPending}
                     variant="secondary"
                     size="lg"
@@ -150,7 +153,7 @@ export const SignUpCard = () => {
             <CardContent className="p-7 flex items-center justify-center">
                 <p>Already have an account?
                     <Link href="/sign-in">
-                    <span className="text-blue-700">&nbsp;Sign In</span>
+                        <span className="text-blue-700">&nbsp;Sign In</span>
                     </Link>
                 </p>
             </CardContent>

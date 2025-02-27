@@ -131,7 +131,7 @@ export const SignInCard = () => {
                         <span className="text-blue-700">&nbsp;Sign Up</span>
                     </Link>
                 </p>
-                <p className="text-sm text-muted-foreground mt-4">Copyright Indra Oktafiyanto &copy;2024</p>
+                <p className="text-sm text-muted-foreground mt-4">Copyright Indra Oktafiyanto &copy;2025</p>
             </CardContent>
         </Card>
     )

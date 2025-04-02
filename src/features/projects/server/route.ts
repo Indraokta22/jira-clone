@@ -46,7 +46,9 @@ const app = new Hono()
                     file.$id,
                 );
 
-                uploadedImageUrl = `data:image/png;base64,${Buffer.from(arrayBuffer).toString("base64")}`;
+                uploadedImageUrl = `data:image/png;base64,${Buffer.from(
+                    arrayBuffer
+                ).toString("base64")}`;
             }
 
             const project = await databases.createDocument(
@@ -227,7 +229,7 @@ const app = new Hono()
         async (c) => {
             const databases = c.get("databases");
             const user = c.get("user");
-            const {projectId} = c.req.param();
+            const { projectId } = c.req.param();
 
             const project = await databases.getDocument<Project>(
                 DATABASE_ID,
@@ -241,8 +243,8 @@ const app = new Hono()
                 userId: user.$id,
             });
 
-            if(!member) {
-                return c.json({error: "Unauthorized"}, 401);
+            if (!member) {
+                return c.json({ error: "Unauthorized" }, 401);
             }
 
             const now = new Date();
